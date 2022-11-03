@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All Files</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+
+  <body>
+    <%- include('./partials/nav.ejs') %>
+
+    <table class="table table-striped table-primary">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>File Size</th>
+          <th>Downlodes</th>
+          <th>Uplode Date</th>
+          <th>Secure</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%if (allFiles.length >0){ %> <% allFiles.forEach(function(row){ %>
+            
+                <tr>
+                    <td><%= row.originalName %></td>
+                    <td><%= row.type %></td>
+                    <td><%= row.size %></td>
+                    <td><%= row.downloadCount %></td>
+                    <td><%= row.createdAt %></td>
+                    <td><%= row.password  ? 'True' : 'False'%></td>
+                    <td><a href="<%= `http://localhost:8080/file/${row._id}` %> ">Downlode</a></td>
+                    <td><a href="<%= `http://localhost:8080/delete/${row._id}` %> "><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                </tr>
+        <% })}else{ %>
+        <tr>
+          <td colspan="6">No FIles Found</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </body>
+</html>
