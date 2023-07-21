@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer"); // destination folder
 const router = express.Router();
 const fs = require("fs");
-const { handleDownlode, uploadFile, renderHomePahe, renderAllFilePage, handleDelete } = require("../controller");
+const { handleDownload, uploadFile, renderHomePahe, renderAllFilePage, handleDelete } = require("../controller");
 
 
 var multerStorage = multer.diskStorage({
@@ -24,8 +24,8 @@ const upload = multer({
 router.get("/", renderHomePahe);
 router.get("/allfiles", renderAllFilePage);
 router.post("/upload", upload.single("file"), uploadFile);
-router.get("/file/:id", handleDownlode); // without password
-router.post("/file/:id", handleDownlode); // with password
+router.get("/file/:id", handleDownload); // without password
+router.post("/file/:id", handleDownload); // with password
 router.get("/delete/:id", handleDelete);  // without password
 router.post("/delete/:id", handleDelete); // with password
 

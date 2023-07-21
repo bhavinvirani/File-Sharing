@@ -21,7 +21,7 @@
           <th>Name</th>
           <th>Type</th>
           <th>File Size</th>
-          <th>Downlodes</th>
+          <th>Download</th>
           <th>Uplode Date</th>
           <th>Secure</th>
         </tr>
@@ -36,12 +36,12 @@
                     <td><%= row.downloadCount %></td>
                     <td><%= row.createdAt %></td>
                     <td><%= row.password  ? 'True' : 'False'%></td>
-                    <td><a href="<%= `http://localhost:8080/file/${row._id}` %> ">Downlode</a></td>
-                    <td><a href="<%= `http://localhost:8080/delete/${row._id}` %> "><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                    <td><a href="<%= `http://192.168.1.5:8081/file/${row._id}` %> ">Download</a></td>
+                    <td><a href="<%= `http://192.168.1.5:8081/delete/${row._id}` %> "><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                 </tr>
         <% })}else{ %>
         <tr>
-          <td colspan="6">No FIles Found</td>
+          <td colspan="6">No Files Found</td>
         </tr>
         <% } %>
       </tbody>
